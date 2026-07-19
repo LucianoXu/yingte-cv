@@ -1,0 +1,109 @@
+\documentclass[11pt,a4paper]{moderncv}
+
+\moderncvstyle{banking}
+\moderncvcolor{black}
+
+\usepackage[hmargin=1.8cm, top=1.4cm, bottom=1.6cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{xurl}  % aggressive URL line-breaking; loaded after moderncv's hyperref
+
+% Widen the hints column so labels like "[LICS '26 (Accepted)]" / "Date of birth" don't overflow.
+\setlength{\hintscolumnwidth}{2.8cm}
+
+% Override banking's \cventry: replace the fixed natural-width `l` column with a wrappable `p{}`,
+% so long institution names (e.g. "..., Chinese Academy of Sciences") wrap instead of overflowing.
+\makeatletter
+\renewcommand*{\cventry}[7][.25em]{%
+  \begin{tabular*}{\maincolumnwidth}{%
+    @{}p{.66\maincolumnwidth}@{\extracolsep{\fill}}>{\raggedleft\arraybackslash}p{.30\maincolumnwidth}@{}}%
+    \ifboolexpr{test {\ifstrempty{#4}} and test {\ifstrempty{#5}}}%
+      {}%
+      {{\bfseries #4} & {\bfseries #5}\\}%
+    {\itshape #3\ifstrempty{#6}{}{, #6}} & {\itshape #2}\\%
+  \end{tabular*}%
+  \ifx&#7&%
+  \else{\\%
+    \begin{minipage}{\maincolumnwidth}%
+      \small#7%
+    \end{minipage}}\fi%
+  \par\addvspace{#1}}
+\makeatother
+
+\firstname{Yingte}
+\familyname{Xu}
+\title{PhD candidate · MPI-SP}
+\email{lucianoxu@foxmail.com}
+\homepage{yingte.io}
+\social[github]{LucianoXu}
+\social[orcid]{0000-0001-9071-7862}
+
+\begin{document}
+\makecvtitle
+
+\section{Profile}
+
+Yingte's research applies formal methods to study the programming theory for quantum computing, including semantics, verification techniques, and proof automation. The aim is a practical toolchain that can naturally encode and verify quantum algorithms and protocols.
+
+
+\par\medskip
+
+
+\section{Research Interests}
+\cvitem{}{Quantum Computing \textperiodcentered\ Formal Methods \textperiodcentered\ Programming Language Theory \textperiodcentered\ LLM Architecture}
+
+
+\section{Personal}
+\cvitem{Date of birth}{23 October 1999}
+\cvitem{Place of birth}{Suzhou, Jiangsu}
+\cvitem{Nationality}{P.R. China}
+\cvitem{Languages}{Chinese (native), English, Japanese (N1)}
+
+\section{Education \& Employment}
+
+\cventry{2024--present}{Research Assistant}{Max Planck Institute for Security and Privacy (MPI-SP)}{}{}{}
+
+\cventry{2024--present}{PhD Student}{Ruhr University Bochum}{}{}{}
+
+\cventry{2023--2024}{Remote Internship}{Max Planck Institute for Security and Privacy (MPI-SP)}{}{}{}
+
+\cventry{2022--2023}{Internship}{State Key Laboratory of Computer Science, Institute of Software, Chinese Academy of Sciences}{}{}{}
+
+\cventry{2018--2022}{Bachelor of Science (Physics)}{Lanzhou University}{}{}{}
+
+\cventry{2015--2018}{Suzhou High School}{}{}{}{}
+
+
+\section{Publications}
+
+\cvitem{[LICS '26 (Accepted)]}{Gilles Barthe, Minbo Gao, Jam Kabeer Ali Khan, Matthijs Muis, Ivan Renison, Keiya Sakabe, Michael Walter, Yingte Xu, Tianshi Yu, Li Zhou. \emph{Complete Relational Logic for Infinite-Dimensional Quantum Programs with Unbounded Assertions}.}
+
+\cvitem{[CAV '25]}{Yingte Xu, Li Zhou, and Gilles Barthe. \emph{D-Hammer: Efficient Equational Reasoning for Labelled Dirac Notation}.~\href{https://arxiv.org/abs/2505.08633}{\nolinkurl{arxiv.org/abs/2505.08633}}}
+
+\cvitem{[POPL '25]}{Yingte Xu, Gilles Barthe, and Li Zhou. \emph{Automating Equational Proofs in Dirac Notation}.~\href{https://arxiv.org/abs/2411.11617}{\nolinkurl{arxiv.org/abs/2411.11617}}}
+
+\cvitem{[TOSEM '25]}{Yuan Feng, Li Zhou, Yingte Xu, and Xiaoquan Xu. \emph{Refinement Calculus of Quantum Programs with Projective Assertions}.~\href{https://arxiv.org/abs/2311.14215}{\nolinkurl{arxiv.org/abs/2311.14215}}}
+
+\cvitem{[ASPLOS '23]}{Yuan Feng and Yingte Xu. \emph{Verification of Nondeterministic Quantum Programs}.~\href{https://arxiv.org/abs/2302.07973}{\nolinkurl{arxiv.org/abs/2302.07973}}}
+
+
+\section{Awards}
+
+\cventry[1em]{2025}{Winner of CHES 2025 Deep Learning SCA Battle}{CHES 2025, GE Wars Organization Committee}{}{}{\href{https://pace-tl.gitbook.io/ches-challenge-2025}{\nolinkurl{pace-tl.gitbook.io/ches-challenge-2025}}}
+
+\cventry[1em]{2019}{National Scholarship}{Ministry of Education of the People's Republic of China}{}{}{}
+
+
+\section{Projects}
+
+\cventry[1em]{2025}{D-Hammer}{}{}{}{A C++ tool that efficiently decides equations of labelled Dirac notations.~\href{https://github.com/LucianoXu/D-Hammer}{\nolinkurl{github.com/LucianoXu/D-Hammer}}}
+
+\cventry[1em]{2024-2025}{DiracDec}{}{}{}{A prototype for proof automation of Dirac notation equations. Implemented in Mathematica, integrated with its computer algebra system for reals.~\href{https://github.com/LucianoXu/DiracImplementation}{\nolinkurl{github.com/LucianoXu/DiracImplementation}}}
+
+\cventry[1em]{2024}{QRefine}{}{}{}{A prototype IDE for quantum program development with program refinement support, implemented in Python.~\href{https://github.com/LucianoXu/QRefine}{\nolinkurl{github.com/LucianoXu/QRefine}}}
+
+\cventry[1em]{2023}{NQPV}{}{}{}{Artifact for verification of nondeterministic quantum programs.~\href{https://github.com/LucianoXu/NQPV}{\nolinkurl{github.com/LucianoXu/NQPV}}}
+
+
+\end{document}
