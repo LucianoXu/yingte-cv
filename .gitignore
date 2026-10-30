@@ -1,5 +1,5 @@
-# LaTeX build artifacts. The compiled PDF (yingte-xu-cv.pdf) is tracked on
-# purpose so the website submodule can consume it without a LaTeX toolchain.
+# LaTeX build artifacts. The compiled PDFs (yingte-xu-cv.pdf, yingte-xu-cv-zh.pdf)
+# are tracked on purpose so the website submodule can consume them without a LaTeX toolchain.
 *.aux
 *.log
 *.out
@@ -9,3 +9,4 @@
 *.toc
 *.bbl
 *.blg
+*.xdv
