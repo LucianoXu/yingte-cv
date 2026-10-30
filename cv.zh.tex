@@ -1,0 +1,165 @@
+% 中文简历。与 cv.tex 逐节对应，改动其一时请同步另一份。
+% 用 XeLaTeX 编译（见 Makefile）：ctex 负责中文排版，字体固定为 TeX Live 自带的 Fandol，
+% 保证在任何装有 TeX Live 的机器上编译结果一致。
+\documentclass[11pt,a4paper]{moderncv}
+
+\moderncvstyle{banking}
+\moderncvcolor{black}
+
+\usepackage[hmargin=1.8cm, top=1.4cm, bottom=1.6cm]{geometry}
+\usepackage[UTF8, scheme=plain, fontset=fandol]{ctex}
+\usepackage{libertinus}
+\usepackage{xurl}  % aggressive URL line-breaking; loaded after moderncv's hyperref
+
+% Widen the hints column so labels like "2024--2026（预计）" don't overflow.
+\setlength{\hintscolumnwidth}{2.8cm}
+
+% 中英混排时别把缩写和带连字符的名称拆开（否则会出现 "ASP-LOS"、"cvc5-/xyz" 之类）。
+\hyphenation{ASPLOS}
+\exhyphenpenalty=10000
+
+\makeatletter
+% Aligned publication entry: fixed-width venue-tag column + ragged-right citation,
+% so every tag and every citation left-edge lines up (banking's inline \cvitem does not).
+\newcommand*{\publication}[2]{%
+  \begin{tabular*}{\maincolumnwidth}{%
+    @{}p{2.6cm}@{}>{\raggedright\arraybackslash}p{\dimexpr\maincolumnwidth-2.6cm\relax}@{}}%
+    {\bfseries #1} & #2\\%
+  \end{tabular*}%
+  \par\addvspace{.5em}}
+
+% 中文姓名姓、名之间不留空格：banking 抬头默认排成 "\@firstname~\@lastname"。
+\patchcmd{\makehead}{\@firstname~\@lastname}{\@firstname\@lastname}{}%
+  {\PackageError{cv.zh}{Could not patch the moderncv name line}{}}
+\makeatother
+
+% moderncv 的 PDF 元数据同样用 "名~姓"，这里整体改写。
+\AtEndPreamble{\hypersetup{
+  pdfauthor   = {许英特},
+  pdftitle    = {许英特 -- 简历},
+  pdfsubject  = {许英特的简历},
+  pdfkeywords = {许英特, Yingte Xu, 简历}}}
+
+% moderncv 的 \firstname 放在前面；中文姓在前，所以这里是"姓 + 名"。
+\firstname{许}
+\familyname{英特}
+\title{Yingte Xu}
+\email{lucianoxu@foxmail.com}
+\homepage{yingte.io}
+\social[github]{LucianoXu}
+\social[orcid]{0000-0001-9071-7862}
+
+\begin{document}
+\makecvtitle
+
+\section{研究概述}
+
+我的研究将形式化方法应用于量子计算的程序理论，包括语义、验证技术与证明自动化。目标是一个实用的工具链，能够自然地编码并验证量子算法与协议。近期工作也探索以机器学习与基于大语言模型的编程智能体作为迈向这一自动化的途径。
+
+
+\par\medskip
+
+
+% \section{研究兴趣}
+% \cvitem{}{量子计算 \textperiodcentered\ 形式化方法 \textperiodcentered\ 程序语言理论 \textperiodcentered\ 大模型架构}
+
+
+% \section{个人信息}
+% \cvitem{出生日期}{1999 年 10 月 23 日}
+% \cvitem{出生地}{江苏苏州}
+% \cvitem{国籍}{中华人民共和国}
+% \cvitem{语言}{中文（母语）、英文、日文（N1）}
+
+\section{教育与工作经历}
+
+\cventry{2024--2026（预计）}{博士研究生、研究助理}{鲁尔大学波鸿 / 马克斯·普朗克安全与隐私研究所（MPI-SP）}{德国波鸿}{}
+{\textbf{导师：}Gilles Barthe \\
+\textbf{博士论文：}Automation of Formal Languages for Quantum Computing}
+
+% \vspace{1em}
+
+% \cventry{2023--2024}{实习}{马克斯·普朗克安全与隐私研究所（MPI-SP）}{}{}{}
+
+\vspace{1em}
+
+\cventry{2022--2023}{实习}{中国科学院软件研究所}{中国北京}{}{}
+
+\vspace{1em}
+
+\cventry{2018--2022}{理学学士（物理学）}{兰州大学}{中国兰州}{}
+{}
+
+\section{荣誉与奖项}
+
+\cventry[1em]{2026}{SMT-COMP 2026~\href{https://smt-comp.github.io/2026/results/}{[结果]}}{最佳综合排名（Unsat）冠军（参赛求解器 cvc5-xyz）}{}{}{}
+
+\cventry[1em]{2025}{CHES 2025，GE Wars 组织委员会~\href{https://pace-tl.gitbook.io/ches-challenge-2025}{[链接]}}{CHES 2025 深度学习侧信道分析挑战赛冠军（共 15 支队伍，奖金 \$1000）}{}{}
+{
+  % 训练了一个机器学习模型，从设备的功耗曲线中恢复 AES 密钥。
+}
+
+\cventry[1em]{2022}{中国科学院量子计算云平台}{首届全国“挑战杯”量子计算竞赛冠军（奖金 \$1500）}{}{}{}
+
+\cventry[1em]{2019}{中华人民共和国教育部}{国家奖学金（\$1000）}{}{}{}
+
+
+
+\section{论文发表}
+
+\publication{[LICS '26]}{Gilles Barthe, Minbo Gao, Jam Kabeer Ali Khan, Matthijs Muis, Ivan Renison, Keiya Sakabe, Michael Walter, \textbf{Yingte Xu}, Tianshi Yu, Li Zhou. \emph{Complete Relational Logic for Infinite-Dimensional Quantum Programs with Unbounded Assertions}.~\href{https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.LICS.2026.15}{[DOI]}}
+
+\publication{[CAV '25]}{\textbf{Yingte Xu}, Li Zhou, and Gilles Barthe. \emph{D-Hammer: Efficient Equational Reasoning for Labelled Dirac Notation}.~\href{https://arxiv.org/abs/2505.08633}{[arXiv]}}
+
+\publication{[POPL '25]}{\textbf{Yingte Xu}, Gilles Barthe, and Li Zhou. \emph{Automating Equational Proofs in Dirac Notation}.~\href{https://arxiv.org/abs/2411.11617}{[arXiv]}}
+
+\publication{[TOSEM '25]}{Yuan Feng, Li Zhou, \textbf{Yingte Xu}, and Xiaoquan Xu. \emph{Refinement Calculus of Quantum Programs with Projective Assertions}.~\href{https://arxiv.org/abs/2311.14215}{[arXiv]}}
+
+\publication{[ASPLOS '23]}{Yuan Feng and \textbf{Yingte Xu}. \emph{Verification of Nondeterministic Quantum Programs}.~\href{https://arxiv.org/abs/2302.07973}{[arXiv]}}
+
+
+
+\section{研讨会论文}
+
+\publication{[PLanQC '26]}{\textbf{Yingte Xu}. \emph{A Unified Assertion-Based Framework for Classical-Quantum Program Verification}. PLanQC 2026，与 POPL 2026 同期举办。\href{https://popl26.sigplan.org/details/planqc-2026-papers/5/A-Unified-Assertion-Based-Framework-for-Classical-Quantum-Program-Verification}{[链接]}}
+
+
+\section{专业技能}
+\textbf{编程语言：}Python、C/C++、OCaml、JavaScript、Mathematica、MATLAB
+
+\textbf{形式化方法与证明自动化：}Rocq（Coq）、Lean 4、项重写引擎、SMT 与一阶逻辑（Vampire）求解器
+
+\textbf{机器学习：}PyTorch、Hugging Face（Transformers、Datasets、Accelerate）、NumPy、Pandas、Numba
+
+\textbf{系统与工具：}Docker、OpenTelemetry、响应式数据流（ReactiveX / RxPY）、WebSockets、大模型编程智能体工作流
+
+
+\section{教学经历}
+
+\cventry[1em]{2024}{讲师}{量子计算人才培养暑期学校（中国科学技术大学，线上）}{}{}{}
+\vspace{-1em}
+\cventry[1em]{2022--2023}{助教}{}{}{}{}
+
+\cventry[1em]{2019}{助教}{线性代数（兰州大学）}{}{}{}
+
+
+\section{学术服务}
+
+\cvitem{}{\textbf{副审稿人：}ICTAC 2026（理论计算方面国际学术研讨会）}
+
+
+\section{研究工具与项目}
+
+\cventry[1em]{2026}{VisualProof}{}{}{}{把 Lean 代码库绘制成声明依赖图的网页工具，点亮每条定理的陈述所依赖的内容，供人与 AI 智能体协同审阅并留下审计记录；也能把代码库绘制成海报。\href{https://github.com/LucianoXu/VisualProof}{[GitHub]}}
+
+\cventry[1em]{2026}{AI4SMT}{}{}{}{基于大模型编程智能体的框架，针对 SMT-COMP 基准优化 cvc5 SMT 求解器的启发式策略；由此得到的求解器 \emph{cvc5-xyz} 在 SMT-COMP 2026 获最佳综合排名（Unsat）冠军，并在最大领先优势排名中获两项第一。\href{https://github.com/LucianoXu/AI4SMT}{[GitHub]}}
+
+\cventry[1em]{2025}{D-Hammer}{}{}{}{高效判定带标号 Dirac 记号方程的 C++ 引擎。论文 \emph{D-Hammer} [CAV~'25] 的配套工具。\href{https://github.com/LucianoXu/D-Hammer}{[GitHub]}}
+
+\cventry[1em]{2024--2025}{DiracDec}{}{}{}{Dirac 记号方程证明自动化的 Mathematica 原型，集成其实数计算代数系统。论文 \emph{Automating Equational Proofs in Dirac Notation} [POPL~'25] 的配套工具。\href{https://github.com/LucianoXu/DiracImplementation}{[GitHub]}}
+
+\cventry[1em]{2024}{QRefine}{}{}{}{支持程序精化的量子程序开发 IDE 原型，Python 实现，基于论文 \emph{Refinement Calculus of Quantum Programs with Projective Assertions} [TOSEM~'25]。\href{https://github.com/LucianoXu/QRefine}{[GitHub]}}
+
+\cventry[1em]{2023}{NQPV}{}{}{}{用于非确定性量子程序形式化验证的 Python 辅助工具。论文 \emph{Verification of Nondeterministic Quantum Programs} [ASPLOS~'23] 的配套工具。\href{https://github.com/LucianoXu/NQPV}{[GitHub]}}
+
+
+\end{document}
